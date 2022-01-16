@@ -23,14 +23,10 @@ function createGallaryMarkup(galleryItems) {
     .join("");
 }
 
-galleryRef.addEventListener("click", onGalaryClick);
+galleryRef.addEventListener("click", createImgInModal);
 
-function onGalaryClick(event) {
-  const isPreviewIMG = event.target.classList.contains("gallery__image");
-
-  if (!isPreviewIMG) {
-    return;
-  }
-  event.preventDefault();
-  console.log(event.target.dataset.source);
+let image = "";
+function createImgInModal(event) {
+  image = basicLightbox.create(`
+    <img src=${event.target.dataset.source}>`);
 }
